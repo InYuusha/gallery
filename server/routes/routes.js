@@ -24,7 +24,7 @@ router.get('/',(req,res)=>{
     res.send("Hello World")
   
 })
-router.post('/post',upload.single('image'),(req,res)=>{
+router.post('/post',upload.single('image'),async(req,res)=>{
     if(!req.file){
         console.log("Select a image")
         res.send({success:false,msg:'Image not selected'})
@@ -32,11 +32,14 @@ router.post('/post',upload.single('image'),(req,res)=>{
     else{
         let host = req.get('host')
         let imageUrl = `${req.protocol}://${host}/${req.file.path}`
+        
 
         let event = new events({
             name:req.body.name,
             description:req.body.description,
-            imageUrl:imageUrl
+            imageUrl:imageUrl,
+            keywords:req.body.keywords,
+            timestamp:new Date().toDateString()
         })
         event.save((err,result)=>{
             if(err)res.send({success:false,msg:err})
@@ -50,6 +53,22 @@ router.get('/gallery',(req,res)=>{
         res.json(result)
     })
 })
+router.get('/gallery/:id',(req,res)=>{
+    events.findOne({_id:req.params.id},(err,result)=>{
+        if(err) res.send({success:false,msg:err})
+        res.json(result)
+    })
+})
+
+router.get('/gallery/latest',async(req,res)=>{
+    await events.find().sort({timestamp:-1}).limit(3)        //not working
+    
+    .then((data)=>{
+        res.json(data)
+    })
+    
+})
+
 
 
 //exports

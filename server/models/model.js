@@ -3,7 +3,9 @@ const mongoose = require('mongoose')
 const event = mongoose.Schema({
     name:String,
     description:String,
-    imageUrl:String
+    imageUrl:String,
+    timestamp:String,
+    keywords:Array,
 
 })
 
