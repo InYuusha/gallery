@@ -2,10 +2,10 @@
   <v-row justify="end">
       <v-col><a><p class="text-uppercase" id="geek">code geek</p></a></v-col>
 
-      <v-col cols="1"><span @click="$router.push('/all')" class="home">Home</span></v-col>
+      <v-col cols="1"><span @click="$router.push('/')" class="home">Home</span></v-col>
 
       <v-col cols="1" v-for="(item, key) in navItems" class="mx-1">
-        <p  id="nav">{{item}}</p>
+        <v-btn text :to="item.link" id="nav">{{item.name}}</v-btn>
              
       </v-col>
     </v-row>
@@ -18,8 +18,8 @@ export default{
     data:()=>({
         navItems:[
             
-            'Contact',
-            'Blogs'
+            {name:'Contact',link:'/contact'},
+            {name:'Blogs',link:'/all'}
         ]
     })
 
