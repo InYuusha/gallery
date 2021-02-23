@@ -1,9 +1,14 @@
 <template>
-  <v-app style="margin-left:50px;margin-right:50px;margin-top:40px;">
+
+
+    <v-app id="app" style="margin-left:50px;margin-right:50px;margin-top:40px;">
+     
     <Navbar />
-    
+   
    <router-view></router-view>
+  
   </v-app>
+
 </template>
 
 <script>
@@ -22,3 +27,22 @@ export default {
   }),
 };
 </script>
+<style>
+
+:root {  
+  --red: #ff6f69;  
+  --beige: #ffeead;  
+  --yellow: #ffcc5c;  
+  --dark:rgb(10, 10, 32);
+    --wh:white;
+    --gr:grey;
+ 
+}
+body,#app {
+  background:var(--dark);
+  color:white;
+
+}
+
+
+</style>

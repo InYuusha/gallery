@@ -1,15 +1,16 @@
 <template>
 <div class="home-page">
-    <h1 class="my-7">Latest Posts</h1>
+    <h1 class="my-7">Latest Posts <v-icon medium dark >mdi-arrow-down</v-icon></h1>
 
     <v-row justify="start" >
       <v-col cols="4"  v-for="(event, key) in getLatestEvents" :key="key"  >
             <v-card class="ml-1" >
                 
           <v-img :src="event.imageUrl" :aspect-ratio="10/10"></v-img>
-          <v-card-title>{{event.name}}</v-card-title>
+          <v-card-title class="title">{{event.name}}</v-card-title>
+          <v-card-subtitle style="color:grey">{{event.timestamp}}</v-card-subtitle>
           <v-card-actions>
-            <v-chip outlined color="blue lighten-2" v-for="(tag, key) in event.keywords">{{tag}}</v-chip>
+            <v-btn  @click="getPostWithTag(tag)" class="mx-1" outlined rounded color="purple lighten-2" v-for="(tag, key) in event.keywords">{{tag}}</v-btn>
           </v-card-actions>
           
           
@@ -34,12 +35,21 @@ export default{
         getLatestEvents(){
             return this.$store.state.latestEvents;
         }
+    },
+      methods:{
+    getPostWithTag(tag){
+      this.$router.push(`/tags/${tag}`)
+
     }
+  }
 
 }
 
 </script>
 
 <style>
+.title {
+  color:var(--wh)
+}
 
 </style>

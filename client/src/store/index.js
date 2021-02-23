@@ -6,7 +6,9 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     events:[],
-    latestEvents:[]
+    latestEvents:[],
+    tagPosts:[],
+    tags:[]
   },
   mutations: {
   },

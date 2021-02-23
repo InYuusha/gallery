@@ -5,7 +5,7 @@
       <v-col cols="1"><span @click="$router.push('/')" class="home">Home</span></v-col>
 
       <v-col cols="1" v-for="(item, key) in navItems" class="mx-1">
-        <v-btn text :to="item.link" id="nav">{{item.name}}</v-btn>
+        <v-btn dark text :to="item.link" id="nav">{{item.name}}</v-btn>
              
       </v-col>
     </v-row>
