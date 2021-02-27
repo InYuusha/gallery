@@ -32,11 +32,15 @@
       <v-col cols="md-4 sm-12"  v-for="(event, key) in getLatestEvents" :key="key"  >
             <v-card  class="ml-1" style="border-radius:15px;padding:10px;" >
                 
-          <v-img :src="event.imageUrl" :aspect-ratio="10/10"></v-img>
+          <v-img :src="event.imageUrl" width="350" :aspect-ratio="10/10"></v-img>
           <v-card-title class="title">{{event.name}}</v-card-title>
           <v-card-subtitle style="color:grey">{{event.timestamp}}</v-card-subtitle>
-          <v-card-actions >
-            <v-btn dark  @click="getPostWithTag(tag)" class="mx-1"  rounded color="grey darken-3" v-for="(tag, key) in event.keywords">{{tag}}</v-btn>
+          <v-card-actions>
+            <v-row class="d-flex flex-wrap">
+              <v-btn dark  @click="getPostWithTag(tag)" class="mx-1 my-2"  rounded color="grey darken-3" v-for="(tag, key) in event.keywords">{{tag}}</v-btn>
+
+            </v-row>
+            
           </v-card-actions>
           
           

@@ -15,7 +15,7 @@ app.use((req,res,next)=>{
 
 })
 
-app.use('/public',express.static('public'))
+app.use('/public', express.static('public'))
 app.use(express.urlencoded({extended:true}))
 app.use(express.json())
 
