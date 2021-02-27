@@ -1,10 +1,15 @@
 <template>
   <v-row justify="start">
-      <v-col cols="1" style="display:flex;justify-content:start"><a><v-btn small dark rounded color="grey darken-3" @click="dialog=true" >A Vue Creation</v-btn></a></v-col>
-      <v-col cols="11" style="display:flex;justify-content:end">
-        <v-btn color="grey darken-2"  class="text-no-wrap secondary mr-2" @click="$router.push('/')"  dark  >Home</v-btn>
-        <v-btn color="grey darken-2" class="text-no-wrap secondary mr-2" @click="$router.push('/all')"  dark  >Blogs</v-btn>
-        <v-btn color="grey darken-2" class="text-no-wrap secondary mr-2" @click="$router.push('/contact')"  dark  >Contact</v-btn>
+      <v-col cols="1" class="mx-2" style="display:flex; justify-content:center" >
+
+        <a><v-btn x-small dark rounded color="grey darken-3" @click="dialog=true" >A Vue Creation</v-btn></a>
+
+        </v-col>
+      <v-col cols="10" style="display:flex;justify-content:end">
+
+        <v-btn color="grey darken-2" small  class="text-no-wrap secondary mr-2" @click="$router.push('/')"  dark  >Home</v-btn>
+        <v-btn color="grey darken-2" small class="text-no-wrap secondary mr-2" @click="$router.push('/all')"  dark  >Blogs</v-btn>
+        <v-btn color="grey darken-2" small class="text-no-wrap secondary mr-2" @click="$router.push('/contact')"  dark  >Contact</v-btn>
 
       </v-col>
      
