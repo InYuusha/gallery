@@ -11,7 +11,7 @@
           <v-card-title class="title">{{event.name}}</v-card-title>
           <v-card-subtitle style="color:grey">{{event.timestamp}}</v-card-subtitle>
           <v-card-actions>
-            <v-chip id="chip" class="mx-1" outlined rounded color="purple lighten-2" v-for="(tag, key) in event.keywords" @click="getPostWithTag(tag)">{{tag}}</v-chip>
+            <v-chip id="chip" class="mx-1" rounded color="grey darken-3" dark v-for="(tag, key) in event.keywords" @click="getPostWithTag(tag)">{{tag}}</v-chip>
           </v-card-actions>
           
           

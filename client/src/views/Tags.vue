@@ -11,7 +11,7 @@
           <v-card-title class="title">{{event.name}}</v-card-title>
           <v-card-subtitle style="color:grey">{{event.timestamp}}</v-card-subtitle>
           <v-card-actions>
-            <v-chip class="mx-2" outlined color="blue lighten-2" v-for="(tag, key) in event.keywords">{{tag}}</v-chip>
+            <v-chip class="mx-2" rounded color="grey darken-3" dark v-for="(tag, key) in event.keywords">{{tag}}</v-chip>
           </v-card-actions>
           
           
@@ -24,7 +24,7 @@
           <v-col cols="12" align="center"> <h2>All Tags<v-icon dark medium>mdi-arrow-down</v-icon></h2></v-col>
           
           <v-col  cols="6" align="center" >
-              <v-chip class="mx-1" small v-for="(tag,key) in getAllTags" :key="key" @click="getPostWithTag(tag)" color="indigo lighten-3" dark outlined>{{tag}}</v-chip>
+              <v-chip class="mx-1" small v-for="(tag,key) in getAllTags" :key="key" @click="getPostWithTag(tag)" rounded color="grey darken-3" dark>{{tag}}</v-chip>
 
           </v-col>
     

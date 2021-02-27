@@ -1,5 +1,6 @@
 const express = require('express')
-const routes = require('./routes/posts')
+const postRoutes = require('./routes/posts')
+const tagRoutes = require('./routes/tags')
 const mongoose = require('mongoose')
 
 const app = express()
@@ -25,7 +26,8 @@ mongoose.connect('mongodb://localhost:27017/gallery',{useNewUrlParser:true,useUn
 
 
 //routes
-app.use('',routes)
+app.use('',postRoutes)
+app.use('',tagRoutes)
 
 
 //listen

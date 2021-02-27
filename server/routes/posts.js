@@ -3,7 +3,7 @@ const router = express.Router()
 
 
 const path = require('path')
-const { uploadData, getAllPosts ,getOnePost,getLatest} = require('../Controllers/postHandler')
+const { uploadData, getAllPosts ,getOnePost,getLatest,getRandom} = require('../Controllers/postHandler')
 const upload = require('../config/multer')
 
 
@@ -28,6 +28,9 @@ router.get('/gallery/:id',getOnePost)
 
 //get latest three posts
 router.get('/latest',getLatest)
+
+//get random post
+router.get('/random',getRandom)
 
 
 

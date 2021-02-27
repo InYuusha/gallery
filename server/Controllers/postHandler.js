@@ -59,3 +59,16 @@ exports.getLatest = async function(req,res){
     }
          
 }
+exports.getRandom = async function(req,res){
+    
+    try{
+        events.aggregate([{$sample:{size:1}}])
+        .then(data=>{
+            
+            res.send(data)
+        })
+    }
+    catch(err){
+        console.log(err)
+    }
+}
