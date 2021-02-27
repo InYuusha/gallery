@@ -2,12 +2,12 @@
 <v-container>
     <h2>{{getTagPosts.length}} Posts Tagged with {{$route.params.tag}} <v-icon dark large>mdi-arrow-down</v-icon></h2>
 
-  <v-row justify="start" class="mt-7 mb-7"> 
+  <v-row justify="start" class="d-flex flex-wrap mt-7 mb-7"> 
       
-      <v-col cols="4"  v-for="(event, key) in getTagPosts" :key="key"  >
+      <v-col cols="md-4 sm-12"  v-for="(event, key) in getTagPosts" :key="key"  >
             <v-card class="ml-1" >
                 
-          <v-img :src="event.imageUrl" :aspect-ratio="10/10"></v-img>
+          <v-img :src="event.imageUrl" width="350" :aspect-ratio="10/10"></v-img>
           <v-card-title class="title">{{event.name}}</v-card-title>
           <v-card-subtitle style="color:grey">{{event.timestamp}}</v-card-subtitle>
           <v-card-actions>
