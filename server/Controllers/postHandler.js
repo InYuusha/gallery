@@ -23,7 +23,7 @@ exports.uploadData = async function(req,res){
             })
             await event.save((err,result)=>{
                 if(err)res.send({success:false,msg:err})
-                res.send({success:true,msg:result})
+                
             })
         }
    
