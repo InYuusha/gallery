@@ -23,12 +23,11 @@ exports.uploadData = async function(req,res){
             })
             await event.save((err,result)=>{
                 if(err)res.send({success:false,msg:err})
-                res.redirect('http://localhost:8080/')
+                res.redirect('https://gallery975.netlify.app')
                 
               
             })
         }
-   
 }
 exports.getAllPosts = async function(res,res){
 
