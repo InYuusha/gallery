@@ -5,7 +5,7 @@
        
         <v-col cols="md-6 sm-12">
 
-        <form @submit="$router.push('/')" style="width:100%" action="http://127.0.0.1:5000/post" method="post" enctype="multipart/form-data">
+        <v-form @submit="redirectBack()" style="width:100%" action="http://127.0.0.1:5000/post" method="post" enctype="multipart/form-data">
         
         <v-file-input width="50%" height="80%" @change="viewImg" c name="img" type="file" outlined accept="image/" label="Selct a Cover"></v-file-input>
         <v-text-field  name="name" type="text" clearable outlined dark placeholder="Title"></v-text-field>
@@ -17,7 +17,7 @@
         <v-btn @submit="$router.push('/')" type="submit" >Post</v-btn>
          <v-text-field type="hidden" name="keywords" v-for="(tag,key) in tags" :value="tag"></v-text-field>
 
-      </form>    
+      </v-form>    
     </v-col>
 
     <v-col cols="md-6 sm-12">
