@@ -1,5 +1,5 @@
 const events = require('../models/model')
-
+const _ = require('lodash')
 exports.getAllTags =  async function (req,res){
     let tags=[]
   await events.find()
@@ -25,12 +25,11 @@ exports.getAllTags =  async function (req,res){
 }
 
 exports.getPostWithTag = async function(req,res){
+    
+   await events.find({keywords:req.params.tag})
+   .then(posts=>res.json(posts))
+   .catch(err=>res.send({success:false,msg:err}))
 
-await events.find({keywords: req.params.tag})
-.then((data)=>{
-    
-    res.json(data);
-    
-})
-.catch(err=>res.send({err}))
+
+
 }

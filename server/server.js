@@ -1,4 +1,5 @@
 const express = require('express')
+
 const postRoutes = require('./routes/posts')
 const tagRoutes = require('./routes/tags')
 const mongoose = require('mongoose')
