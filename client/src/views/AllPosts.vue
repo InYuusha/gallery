@@ -1,13 +1,13 @@
 <template>
   <div class="all posts" >
     
-    <h2 class="my-7" id="blog">Blog posts <v-icon dark medium>mdi-arrow-down</v-icon></h2>
+    <h2 class="my-7" id="blog"><v-icon @click="$router.go(-1)" class="mr-7" dark>mdi-arrow-left</v-icon>Blog posts <v-icon dark medium>mdi-arrow-down</v-icon></h2>
   
  
       <v-row justify="start" class="d-flex flex-wrap">
       <v-col cols="md-4 sm-6"  v-for="(event, key) in events" :key="key"  >
-            <v-card class="ml-1 elevation-24" >
-          <v-img :src="event.imageUrl" :aspect-ratio="10/10" width="360"></v-img>
+            <v-card dark class="ml-1 elevation-24" >
+          <v-img :src="`http://127.0.0.1:5000/img/${event._id}`" :aspect-ratio="10/10" width="360"></v-img>
           <v-card-title class="title">{{event.name}}</v-card-title>
           <v-card-subtitle style="color:grey">{{event.timestamp}}</v-card-subtitle>
           <v-card-actions>
@@ -22,11 +22,6 @@
       </v-col>
     </v-row>
     
-
-
-
- 
-
     
   </div>
 </template>

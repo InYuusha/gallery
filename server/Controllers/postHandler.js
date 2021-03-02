@@ -1,5 +1,7 @@
 
 const events = require('../models/model')
+const fs = require('fs')
+const path = require('path')
 
 
 
@@ -10,24 +12,27 @@ exports.uploadData = async function(req,res){
             res.send({success:false,msg:'Image not selected'})
         }
         else{
-            let host = req.get('host')
-            let imageUrl = `${req.protocol}://${host}/${req.file.path}`
-            
+          
              //new event
             let event = new events({
                 name:req.body.name,
                 description:req.body.description,
-                imageUrl:imageUrl,
+                imageUrl:{
+                    data:fs.readFileSync(path.join(req.file.path)),
+                    contentType:'image/png'
+                },
                 keywords:req.body.keywords,
                 timestamp:new Date().toDateString()
             })
             await event.save((err,result)=>{
                 if(err)res.send({success:false,msg:err})
-                res.redirect('https://gallery975.netlify.app')
+               // res.redirect('https://gallery975.netlify.app')
+               res.json(result)
                 
               
             })
         }
+   
 }
 exports.getAllPosts = async function(res,res){
 

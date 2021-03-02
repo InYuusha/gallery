@@ -1,13 +1,13 @@
 <template>
 <v-container>
-    <h2>{{getTagPosts.length}} Posts Tagged with {{$route.params.tag}} <v-icon dark large>mdi-arrow-down</v-icon></h2>
+    <h2 class="mt-14"><v-icon dark  class="mr-7" @click="$router.go(-1)">mdi-arrow-left</v-icon>{{getTagPosts.length}} Posts Tagged with {{$route.params.tag}} <v-icon dark large>mdi-arrow-down</v-icon></h2>
 
   <v-row justify="start" class="d-flex flex-wrap mt-7 mb-7"> 
       
       <v-col cols="md-4 sm-12"  v-for="(event, key) in getTagPosts" :key="key"  >
-            <v-card class="ml-1" >
+            <v-card dark class="ml-1" >
                 
-          <v-img :src="event.imageUrl" width="350" :aspect-ratio="10/10"></v-img>
+          <v-img :src="`http://127.0.0.1:5000/img/${event._id}`" width="350" :aspect-ratio="10/10"></v-img>
           <v-card-title class="title">{{event.name}}</v-card-title>
           <v-card-subtitle style="color:grey">{{event.timestamp}}</v-card-subtitle>
           <v-card-actions>
@@ -49,7 +49,10 @@ computed:{
 },
 methods:{
      getPostWithTag(tag){
+       
       this.$router.push(`/tags/${tag}`)
+      window.location.reload()
+      
       
       
 

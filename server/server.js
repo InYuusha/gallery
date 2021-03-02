@@ -22,7 +22,8 @@ app.use(express.json())
 
 
 //mongodb connection
-mongoose.connect('mongodb://localhost:27017/gallery',{useNewUrlParser:true,useUnifiedTopology:true})
+let url =`mongodb+srv://InYuusha:qwertyasdzx1234@cluster0.jsh9b.mongodb.net/gallery`
+mongoose.connect(url,{useNewUrlParser:true,useUnifiedTopology:true})
 .then(console.log("Server connected to the database"))
 
 
@@ -32,6 +33,6 @@ app.use('',tagRoutes)
 
 
 //listen
-const port = 5000||process.env.PORT;
+const port = process.env.PORT||5000;
 
 app.listen(port,()=>console.log(`Server is running on ${port}`))
