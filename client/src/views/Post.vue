@@ -1,5 +1,5 @@
 <template>
-<v-container style="position:absolute; top:10%">
+<v-container style="position:relative; top:10%">
      <h2>Add a Post</h2>
     <v-row align="center" style="margin-top:20px">
        

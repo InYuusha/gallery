@@ -27,7 +27,7 @@ exports.uploadData = async function(req,res){
             })
             await event.save((err,result)=>{
                 if(err)res.send({success:false,msg:err})
-                res.redirect(`{hostConfig.frontendHost}/`)
+                res.redirect(`${hostConfig.frontendHost}/`)
               
                 
             })
@@ -82,4 +82,12 @@ exports.getRandom = async function(req,res){
     catch(err){
         console.log(err)
     }
+}
+
+exports.deleteOnePost = async function(req,res){
+    
+    await events.findOneAndDelete({_id:req.params.id})
+    .then(result=>res.send(result))
+    .catch(err=>res.send({sucess:false,msg:err}))
+
 }

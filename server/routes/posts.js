@@ -21,7 +21,7 @@ const router = express.Router()
 
 
 const path = require('path')
-const { uploadData, getAllPosts ,getOnePost,getLatest,getRandom} = require('../Controllers/postHandler')
+const { uploadData, getAllPosts ,getOnePost,getLatest,getRandom,deleteOnePost} = require('../Controllers/postHandler')
 
 const upload = require('../config/multer')
 
@@ -50,6 +50,9 @@ router.get('/latest',getLatest)
 
 //get random post
 router.get('/random',getRandom)
+
+//delete one post
+router.delete('/gallery/:id',deleteOnePost)
 
 
 //exports

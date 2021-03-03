@@ -9,11 +9,11 @@
 
         <v-btn color="grey darken-2" small  class="text-no-wrap secondary mr-2" @click="$router.push('/')"  dark  >Home</v-btn>
         <v-btn color="grey darken-2" small class="text-no-wrap secondary mr-2" @click="$router.push('/all')"  dark  >Blogs</v-btn>
-        <v-btn color="grey darken-2" small class="text-no-wrap secondary mr-2" @click="$router.push('/contact')"  dark  >Contact</v-btn>
+        <v-btn color="grey darken-2" small class="text-no-wrap secondary mr-2" @click="$router.push('/post')"  dark  >Add</v-btn>
 
       </v-col>
      
-      <v-dialog v-model="dialog" width="40%">
+      <v-dialog v-model="dialog" width="md-90">
         <v-sheet >
           <v-sheet  align="center" color="grey darken-4" dark class="text-uppercase font-weight-bold py-3">A vue creation</v-sheet>
           <v-sheet class="py-2  px-4">
