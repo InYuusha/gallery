@@ -7,7 +7,7 @@
       <v-row justify="start" class="d-flex flex-wrap">
       <v-col cols="md-4 sm-6"  v-for="(event, key) in events" :key="key"  >
             <v-card dark class="ml-1 elevation-24" >
-          <v-img :src="`https://gallery975.herokuapp.com/img/${event._id}`" :aspect-ratio="10/10" width="360"></v-img>
+          <v-img :src="`${$store.state.backendHost}/img/${event._id}`" :aspect-ratio="10/10" width="360"></v-img>
           <v-card-title class="title">{{event.name}}</v-card-title>
           <v-card-subtitle style="color:grey">{{event.timestamp}}</v-card-subtitle>
           <v-card-actions>
@@ -37,7 +37,7 @@ export default {
    
   },
   mounted(){
-    axios.get('https://gallery975.herokuapp.com/gallery')
+    axios.get(`${this.$store.state.backendHost}/gallery`)
     .then(data=>{
       this.$store.state.events = data.data.reverse()
     })

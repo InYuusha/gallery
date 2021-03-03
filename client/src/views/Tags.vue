@@ -7,7 +7,7 @@
       <v-col cols="md-4 sm-12"  v-for="(event, key) in getTagPosts" :key="key"  >
             <v-card dark class="ml-1" >
                 
-          <v-img :src="`http://127.0.0.1:5000/img/${event._id}`" width="350" :aspect-ratio="10/10"></v-img>
+          <v-img :src="`${$store.state.backendHost}/img/${event._id}`" width="350" :aspect-ratio="10/10"></v-img>
           <v-card-title class="title">{{event.name}}</v-card-title>
           <v-card-subtitle style="color:grey">{{event.timestamp}}</v-card-subtitle>
           <v-card-actions>

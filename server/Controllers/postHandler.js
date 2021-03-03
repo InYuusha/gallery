@@ -1,5 +1,6 @@
 
 const events = require('../models/model')
+const hostConfig = require('../config/host')
 const fs = require('fs')
 const path = require('path')
 
@@ -26,7 +27,7 @@ exports.uploadData = async function(req,res){
             })
             await event.save((err,result)=>{
                 if(err)res.send({success:false,msg:err})
-                res.redirect('htts://gallery975.netlify.app')
+                res.redirect(`{hostConfig.frontendHost}/`)
               
                 
             })
