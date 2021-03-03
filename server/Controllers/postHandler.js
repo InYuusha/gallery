@@ -1,8 +1,10 @@
 
 const events = require('../models/model')
+const fs = require('fs')
+const path = require('path')
 
 
-
+// upload post
 exports.uploadData = async function(req,res){
     
         if(!req.file){
@@ -10,24 +12,28 @@ exports.uploadData = async function(req,res){
             res.send({success:false,msg:'Image not selected'})
         }
         else{
-            let host = req.get('host')
-            let imageUrl = `${req.protocol}://${host}/${req.file.path}`
-            
+          
              //new event
             let event = new events({
                 name:req.body.name,
                 description:req.body.description,
-                imageUrl:imageUrl,
+                imageUrl:{
+                    data:fs.readFileSync(path.join(req.file.path)),
+                    contentType:'image/png'
+                },
                 keywords:req.body.keywords,
                 timestamp:new Date().toDateString()
             })
             await event.save((err,result)=>{
                 if(err)res.send({success:false,msg:err})
-                res.send({success:true,msg:result})
+                res.redirect('htts://gallery975.netlify.app')
+              
+                
             })
         }
-   
 }
+
+//get all post
 exports.getAllPosts = async function(res,res){
 
    
@@ -38,14 +44,16 @@ exports.getAllPosts = async function(res,res){
 
 }
 
+//get one post
 exports.getOnePost = async function(req,res){
    
         await events.findOne({_id:req.params.id},(err,result)=>{
             if(err) res.send({success:false,msg:err})
             res.json(result)
         })
-    
 }
+
+// latest three post
 exports.getLatest = async function(req,res){
     
     try{
@@ -58,4 +66,19 @@ exports.getLatest = async function(req,res){
         res.send({success:false,msg:err})
     }
          
+}
+
+//one random post
+exports.getRandom = async function(req,res){
+    
+    try{
+        events.aggregate([{$sample:{size:1}}])
+        .then(data=>{
+            
+            res.send(data)
+        })
+    }
+    catch(err){
+        console.log(err)
+    }
 }

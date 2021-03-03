@@ -1,9 +1,28 @@
+/* Route for post handling 
+
+- '/' --> HEllo world page
+
+- '/post' --> for posting posts
+
+- '/gallery' --> get all posts
+
+- '/gallery/:id' --> getOne post by id
+
+- '/latest' --> get three latest post
+
+- '/random' --> get one random post
+
+*/
+
+
+
 const express = require('express')
 const router = express.Router()
 
 
 const path = require('path')
-const { uploadData, getAllPosts ,getOnePost,getLatest} = require('../Controllers/postHandler')
+const { uploadData, getAllPosts ,getOnePost,getLatest,getRandom} = require('../Controllers/postHandler')
+
 const upload = require('../config/multer')
 
 
@@ -29,6 +48,8 @@ router.get('/gallery/:id',getOnePost)
 //get latest three posts
 router.get('/latest',getLatest)
 
+//get random post
+router.get('/random',getRandom)
 
 
 //exports

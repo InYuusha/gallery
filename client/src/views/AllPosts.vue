@@ -1,17 +1,19 @@
 <template>
   <div class="all posts" >
     
-    <h2 class="mb-7" id="blog">Blog posts <v-icon dark medium>mdi-arrow-down</v-icon></h2>
+    <h2 class="my-7" id="blog"><v-icon @click="$router.go(-1)" class="mr-7" dark>mdi-arrow-left</v-icon>Blog posts <v-icon dark medium>mdi-arrow-down</v-icon></h2>
   
  
-      <v-row justify="start" >
-      <v-col cols="4"  v-for="(event, key) in events" :key="key"  >
-            <v-card class="ml-1 elevation-24" >
-          <v-img :src="event.imageUrl" :aspect-ratio="10/10"></v-img>
+      <v-row justify="start" class="d-flex flex-wrap">
+      <v-col cols="md-4 sm-6"  v-for="(event, key) in events" :key="key"  >
+            <v-card dark class="ml-1 elevation-24" >
+          <v-img :src="`https://gallery975.herokuapp.com/img/${event._id}`" :aspect-ratio="10/10" width="360"></v-img>
           <v-card-title class="title">{{event.name}}</v-card-title>
           <v-card-subtitle style="color:grey">{{event.timestamp}}</v-card-subtitle>
           <v-card-actions>
-            <v-chip id="chip" class="mx-1" outlined rounded color="purple lighten-2" v-for="(tag, key) in event.keywords" @click="getPostWithTag(tag)">{{tag}}</v-chip>
+            <v-row class="flex flex-wrap my-4 mx-2">
+            <v-chip id="chip" class="mx-1" rounded color="grey darken-3" dark v-for="(tag, key) in event.keywords" @click="getPostWithTag(tag)">{{tag}}</v-chip>
+            </v-row>
           </v-card-actions>
           
           
@@ -20,11 +22,6 @@
       </v-col>
     </v-row>
     
-
-
-
- 
-
     
   </div>
 </template>
@@ -40,7 +37,7 @@ export default {
    
   },
   mounted(){
-    axios.get('http://127.0.0.1:5000/gallery')
+    axios.get('https://gallery975.herokuapp.com/gallery')
     .then(data=>{
       this.$store.state.events = data.data.reverse()
     })

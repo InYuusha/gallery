@@ -18,7 +18,7 @@ const routes = [
     component:()=>import('../views/AllPosts.vue')
   },
   {
-    path: '/about',
+    path: '/contact',
     name: 'About',
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
@@ -41,12 +41,17 @@ const routes = [
         
       })
 
-      axios.get('http://127.0.0.1:5000/tags')
+      axios.get('https://gallery975.herokuapp.com/tags')
       .then(data=>
         store.state.tags = data.data)
 
       next()
     }
+  },
+  {
+    path: '/post',
+    name: 'Post',
+    component:()=>import('../views/Post.vue')
   },
 ]
 

@@ -33,7 +33,7 @@ export default {
   --red: #ff6f69;  
   --beige: #ffeead;  
   --yellow: #ffcc5c;  
-  --dark:rgb(10, 10, 32);
+  --dark:rgb(39, 39, 39);
     --wh:white;
     --gr:grey;
  

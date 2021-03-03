@@ -1,10 +1,17 @@
 const express = require('express')
-const routes = require('./routes/posts')
-const mongoose = require('mongoose')
+//routes by category
+const postRoutes = require('./routes/posts')
+const tagRoutes = require('./routes/tags')
+const imgRoutes = require('./routes/img')
 
+//mongo
+const mongoose = require('mongoose')
+const mongoConfig = require('./config/mongodb')
+
+//app
 const app = express()
 
-//config
+//cors headers
 app.use((req,res,next)=>{
     res.header("Access-Control-Allow-Origin","*")
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept")
@@ -13,22 +20,25 @@ app.use((req,res,next)=>{
    
 
 })
-
-app.use('/public',express.static('public'))
+//
+app.use('/public', express.static('public'))
 app.use(express.urlencoded({extended:true}))
 app.use(express.json())
 
 
 //mongodb connection
-mongoose.connect('mongodb://localhost:27017/gallery',{useNewUrlParser:true,useUnifiedTopology:true})
+
+mongoose.connect(mongoConfig.url,{useNewUrlParser:true,useUnifiedTopology:true})
 .then(console.log("Server connected to the database"))
 
 
 //routes
-app.use('',routes)
+app.use('',postRoutes)   //post route
+app.use('',tagRoutes)    //rag route
+app.use('',imgRoutes)    //img route
 
 
 //listen
-const port = 5000||process.env.PORT;
+const port = process.env.PORT||5000;
 
 app.listen(port,()=>console.log(`Server is running on ${port}`))

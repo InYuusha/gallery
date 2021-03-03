@@ -8,7 +8,8 @@ export default new Vuex.Store({
     events:[],
     latestEvents:[],
     tagPosts:[],
-    tags:[]
+    tags:[],
+    randPost:[]
   },
   mutations: {
   },
