@@ -4,7 +4,7 @@
 
   <v-row class="d-flex flex-reverse mt-14 mb-4">
     <v-col cols="md-5 sm-12" align="center">
-      <v-img :aspect-ratio="10/12" width="300" :src="`https://gallery975.herokuapp.com/img/${getRandomPost._id}`"></v-img>
+      <v-img :aspect-ratio="10/12" width="300" :src="`${$store.state.backendHost}/img/${getRandomPost._id}`"></v-img>
   </v-col>
 
   <v-col cols="md-5 sm-12" >
@@ -30,7 +30,7 @@
       <v-col cols="md-4 sm-12"  v-for="(event, key) in getLatestEvents" :key="key"  >
             <v-card dark class="ml-1" style="border-radius:15px;padding:10px;" >
                 
-          <v-img :src="`https://gallery975.herokuapp.com/img/${event._id}`" width="350" :aspect-ratio="10/10"></v-img>
+          <v-img :src="`${$store.state.backendHost}/img/${event._id}`" width="350" :aspect-ratio="10/10"></v-img>
           <v-card-title class="title">{{event.name}}</v-card-title>
           <v-card-subtitle style="color:grey">{{event.timestamp}}</v-card-subtitle>
           <v-card-actions>
@@ -54,7 +54,8 @@ import axios from 'axios'
 export default{
     mounted(){
     try{
-        axios.get('https://gallery975.herokuapp.com/random')
+      //randon post
+        axios.get(`${this.$store.state.backendHost}/random`)
       .then(rand=>{
         
         this.$store.state.randPost = rand.data[0]
@@ -65,9 +66,11 @@ export default{
       console.log(err)
     }
       try{
-          axios.get('https://gallery975.herokuapp.com/latest')
+        //latest post
+        
+          axios.get(`${this.$store.state.backendHost}/latest`)
         .then(data=>{
-            console.log(data.data)
+            
             this.$store.state.latestEvents = data.data
         })
       }

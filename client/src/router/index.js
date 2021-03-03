@@ -33,15 +33,14 @@ const routes = [
     beforeEnter:(to,from,next)=>{
       let tag = to.params.tag
 
-      axios.get(`http://127.0.0.1:5000/tags/${tag}`)
+      axios.get(`${store.state.backendHost}/tags/${tag}`)
       .then(data=>{
-        
         
         store.state.tagPosts = data.data;
         
       })
-
-      axios.get('https://gallery975.herokuapp.com/tags')
+      
+      axios.get(`${store.state.backendHost}/tags`)
       .then(data=>
         store.state.tags = data.data)
 

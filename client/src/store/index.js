@@ -9,7 +9,8 @@ export default new Vuex.Store({
     latestEvents:[],
     tagPosts:[],
     tags:[],
-    randPost:[]
+    randPost:[],
+    backendHost:`http://127.0.0.1:5000`
   },
   mutations: {
   },
