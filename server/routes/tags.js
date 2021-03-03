@@ -1,3 +1,14 @@
+/*
+Route for handling tags
+
+- '/tags' --> get all tags
+
+- '/tags/:tag' --> get all post with that  tag
+
+*/
+
+
+
 const express = require('express')
 const router = express()
 const {getAllTags, getPostWithTag} = require('../Controllers/tagHandler')

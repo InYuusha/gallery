@@ -1,7 +1,9 @@
+
 const events = require('../models/model')
 
 
 exports.getImg= async function(req,res){
+    
     await events.findOne({_id:req.params.id})
     .then((data)=>{
         let imgData =data.imageUrl

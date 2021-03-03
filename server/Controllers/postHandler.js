@@ -4,7 +4,7 @@ const fs = require('fs')
 const path = require('path')
 
 
-
+// upload post
 exports.uploadData = async function(req,res){
     
         if(!req.file){
@@ -26,14 +26,14 @@ exports.uploadData = async function(req,res){
             })
             await event.save((err,result)=>{
                 if(err)res.send({success:false,msg:err})
-               // res.redirect('https://gallery975.netlify.app')
-               res.json(result)
-                
+                res.redirect('htts://gallery975.netlify.app')
               
+                
             })
         }
-   
 }
+
+//get all post
 exports.getAllPosts = async function(res,res){
 
    
@@ -44,14 +44,16 @@ exports.getAllPosts = async function(res,res){
 
 }
 
+//get one post
 exports.getOnePost = async function(req,res){
    
         await events.findOne({_id:req.params.id},(err,result)=>{
             if(err) res.send({success:false,msg:err})
             res.json(result)
         })
-    
 }
+
+// latest three post
 exports.getLatest = async function(req,res){
     
     try{
@@ -65,6 +67,8 @@ exports.getLatest = async function(req,res){
     }
          
 }
+
+//one random post
 exports.getRandom = async function(req,res){
     
     try{

@@ -1,12 +1,17 @@
 const express = require('express')
-
+//routes by category
 const postRoutes = require('./routes/posts')
 const tagRoutes = require('./routes/tags')
-const mongoose = require('mongoose')
+const imgRoutes = require('./routes/img')
 
+//mongo
+const mongoose = require('mongoose')
+const mongoConfig = require('./config/mongodb')
+
+//app
 const app = express()
 
-//config
+//cors headers
 app.use((req,res,next)=>{
     res.header("Access-Control-Allow-Origin","*")
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept")
@@ -15,21 +20,22 @@ app.use((req,res,next)=>{
    
 
 })
-
+//
 app.use('/public', express.static('public'))
 app.use(express.urlencoded({extended:true}))
 app.use(express.json())
 
 
 //mongodb connection
-let url =`mongodb+srv://InYuusha:qwertyasdzx1234@cluster0.jsh9b.mongodb.net/gallery`
-mongoose.connect(url,{useNewUrlParser:true,useUnifiedTopology:true})
+
+mongoose.connect(mongoConfig.url,{useNewUrlParser:true,useUnifiedTopology:true})
 .then(console.log("Server connected to the database"))
 
 
 //routes
-app.use('',postRoutes)
-app.use('',tagRoutes)
+app.use('',postRoutes)   //post route
+app.use('',tagRoutes)    //rag route
+app.use('',imgRoutes)    //img route
 
 
 //listen
