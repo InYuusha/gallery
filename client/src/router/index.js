@@ -41,7 +41,7 @@ const routes = [
         
       })
 
-      axios.get('http://127.0.0.1:5000/tags')
+      axios.get('https://gallery975.herokuapp.com/tags')
       .then(data=>
         store.state.tags = data.data)
 
