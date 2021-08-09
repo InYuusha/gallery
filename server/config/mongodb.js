@@ -1,3 +1,3 @@
 module.exports ={
-    url:`mongodb+srv://InYuusha:pass@cluster0.jsh9b.mongodb.net/gallery`
+    url:`mongodb://localhost:27017/gallery`
 }

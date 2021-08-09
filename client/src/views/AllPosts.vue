@@ -7,12 +7,12 @@
       <v-row justify="start" class="d-flex flex-wrap">
       <v-col cols="md-4 sm-6"  v-for="(event, key) in events" :key="key"  >
             <v-card dark class="ml-1 elevation-24" >
-          <v-img :src="`${$store.state.backendHost}/img/${event._id}`" :aspect-ratio="10/10" width="360"></v-img>
+          <v-img :src="`${$store.state.backendHost}/img/${event._id}`" :aspect-ratio="10/10" ></v-img>
           <v-card-title class="title">{{event.name}}</v-card-title>
           <v-card-subtitle style="color:grey">{{event.timestamp}}</v-card-subtitle>
           <v-card-actions>
             <v-row class="flex flex-wrap my-4 mx-2">
-            <v-chip id="chip" class="mx-1" rounded color="grey darken-3" dark v-for="(tag, key) in event.keywords" @click="getPostWithTag(tag)">{{tag}}</v-chip>
+            <v-chip id="chip" class="mx-1" rounded color="grey darken-3" dark v-for="(tag, key) in event.keywords" :key="key" @click="getPostWithTag(tag)">{{tag}}</v-chip>
            
             <v-btn class="mb-7" fab absolute icon bottom right><v-icon  dark @click="deletePost(event._id)">mdi-trash-can</v-icon></v-btn>
             </v-row>
