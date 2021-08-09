@@ -13,6 +13,8 @@
           <v-card-actions>
             <v-row class="flex flex-wrap my-4 mx-2">
             <v-chip id="chip" class="mx-1" rounded color="grey darken-3" dark v-for="(tag, key) in event.keywords" @click="getPostWithTag(tag)">{{tag}}</v-chip>
+           
+            <v-btn class="mb-7" fab absolute icon bottom right><v-icon  dark @click="deletePost(event._id)">mdi-trash-can</v-icon></v-btn>
             </v-row>
           </v-card-actions>
           
@@ -51,6 +53,10 @@ export default {
     getPostWithTag(tag){
       this.$router.push(`/tags/${tag}`)
 
+    },
+    async deletePost(id){
+      await axios.delete(`${this.$store.state.backendHost}/gallery/${id}`)
+      .then(window.location.reload())
     }
   }
 
